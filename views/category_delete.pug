@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  hr
+  h3= category.name
+
+  unless(itemsInCategory.length==0)
+    p these items are currently using this category. Delete them before deleting this category: 
+    ul
+        each item in itemsInCategory
+            li 
+                a(href=item.url) #{item.name}
+
+
+  else
+    p Are you sure you want to delete this category?
+
+        form(method='POST' action='')
+            div.form-group
+                input#categoryid.form-control(type='hidden',name='categoryid', required='true', value=category._id )
+
+            button.btn.btn-primary(type='submit') Delete

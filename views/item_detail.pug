@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{item.name} details
+  p Description: #{item.description}
+  p Price: #{item.price}
+  p Quantity: #{item.numInStock}
+  p category: 
+    each category in item.category
+        |#{category.name}
+
+    else
+        |there is no category.
+  p
+    a(href=item.url+"/update") update item
+  p
+    a(href=item.url+"/delete") delete item
+

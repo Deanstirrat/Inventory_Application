@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 #{category.name} details
+  p= category.description
+
+  h3 Items
+  hr
+  ul
+    each item in items
+        li 
+          a(href=item.url) #{item.numInStock}   #{item.name}  -  $#{item.price}
+
+    else
+        li There are no items.
+  p
+    a(href=category.url+"/update") update category
+  p
+    a(href=category.url+"/delete") delete category
+
